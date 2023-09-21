@@ -6,6 +6,7 @@ import { useAppDispatch } from "../../redux/hook";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
+// import Loaders from '../../component/loader'
 const ProductPage = () => {
   const dispatch = useAppDispatch();
   const products = useSelector(selectProduct);
@@ -20,27 +21,29 @@ const ProductPage = () => {
     })();
   }, [dispatch]);
 
-  console.log("total product are ",products.products)
+  console.log("total products are ", products.products);
 
   return (
     <>
-      <div className={''}>
-        <h1>All Product are here</h1>
-       <div className='flex flex-wrap'>
-       {products.products && products.products.length > 0 ? (
-          products.products.map((data: any) => (
-            <ProductCard
-              key={data.id}
-              productId={data.id}
-              title={data.title}
-              price={data.price}
-              image={data.image}
-            />
-          ))
-        ) : (
-          <p>No products available</p>
-        )}
-       </div>
+      <div className="">
+        <h1>All Products are here</h1>
+        <div className="flex flex-wrap gap-8 justify-center">
+          {products.isLoading ? (
+            <h1>Loading....</h1> 
+          ) : products.products && products.products.length > 0 ? (
+            products.products.map((data: any) => (
+              <ProductCard
+                key={data.id}
+                productId={data.id}
+                title={data.title}
+                price={data.price}
+                image={data.image}
+              />
+            ))
+          ) : (
+            <p>No products available</p>
+          )}
+        </div>
       </div>
     </>
   );

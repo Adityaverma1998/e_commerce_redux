@@ -1,9 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import products from "./apps/products";
+import productDetails from "./apps/product_details_page";
+
 
 export const store = configureStore({
   reducer: {
-    products
+    products,
+    productDetails
   },
 //   devTools: process.env.NODE_ENV !== "production",
 });
