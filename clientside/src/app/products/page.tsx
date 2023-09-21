@@ -1,8 +1,8 @@
 "use client";
-import ProductCard from "@/component/product_card";
-import { selectProduct } from "@/redux/apps/products";
-import { getAllProducts } from "@/redux/apps/products/action";
-import { useAppDispatch } from "@/redux/hook";
+import ProductCard from "../../component/product_card";
+import { selectProduct } from "../../redux/apps/products";
+import { getAllProducts } from "../../redux/apps/products/action";
+import { useAppDispatch } from "../../redux/hook";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
@@ -26,7 +26,8 @@ const ProductPage = () => {
     <>
       <div className={''}>
         <h1>All Product are here</h1>
-        {products.products && products.products.length > 0 ? (
+       <div className='flex flex-wrap'>
+       {products.products && products.products.length > 0 ? (
           products.products.map((data: any) => (
             <ProductCard
               key={data.id}
@@ -39,6 +40,7 @@ const ProductPage = () => {
         ) : (
           <p>No products available</p>
         )}
+       </div>
       </div>
     </>
   );
